@@ -1,3 +1,4 @@
+# config/initializers/facebook_messenger.rb
 unless Rails.env.production?
   bot_files = Dir[Rails.root.join("app", "bot", "**", "*.rb")]
   bots_reloader = ActiveSupport::FileUpdateChecker.new(bot_files) do
