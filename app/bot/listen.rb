@@ -10,7 +10,7 @@ Bot.on :message do |message|
   Bot.deliver({
     recipient: message.sender,
     message: {
-      text: response(message)
+      text: response(message.text)
     }
   }, access_token: ENV["ACCESS_TOKEN"])
 end
