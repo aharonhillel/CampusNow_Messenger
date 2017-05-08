@@ -1,3 +1,4 @@
+# app/bots/listen.rb
 require "facebook/messenger"
 include Facebook::Messenger
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
@@ -9,7 +10,16 @@ Bot.on :message do |message|
   Bot.deliver({
     recipient: message.sender,
     message: {
-      text: message.text
+      text: response(message)
     }
   }, access_token: ENV["ACCESS_TOKEN"])
+end
+
+def response(message)
+  message = message.downcase
+  if message.includes? "tomorrow"
+    return "hello tomororw"
+  else
+    return "ok"
+  end
 end
